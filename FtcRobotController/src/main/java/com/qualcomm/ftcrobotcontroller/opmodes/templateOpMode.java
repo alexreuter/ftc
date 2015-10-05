@@ -21,11 +21,14 @@ public class templateOpMode extends OpMode {
 
 //USEFUL STUFF
 
-//DcMotor motorRight;
-//DcMotor motorLeft;
+//        DcMotor motorRight;
+//        DcMotor motorLeft;
 //        motorRight = hardwareMap.dcMotor.get("motor_2");
 //        motorLeft.setDirection(DcMotor.Direction.REVERSE);
+//        motor_Front_Left.setPower(1.0);
+
 //        float throttle = -gamepad1.left_stick_y;
 //        float direction = gamepad1.left_stick_x;
 //        float right = throttle - direction;
 //        gamepad1.a
+//telemetry.addData("Text", "*** Robot Data***");

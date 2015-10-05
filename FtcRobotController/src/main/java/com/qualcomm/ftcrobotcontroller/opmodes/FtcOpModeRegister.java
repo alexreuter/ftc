@@ -52,7 +52,7 @@ public class FtcOpModeRegister implements OpModeRegister {
      * The first parameter is the name of the op mode
      * The second parameter is the op mode class property
      *
-     * If two or more op modes are registered with the same name, the app will display an error.
+     * If two or more oop modes are registered with the same name, the app will display an error.
      */
 
     manager.register("I", NullOp.class);
@@ -60,6 +60,8 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register ("This", PushBotAuto.class);
     manager.register ("Works", PushBotManual.class);
     manager.register ("Simple_Dpad", Simple_Dpad.class);
+      manager.register ("joysticks", joysticks.class);
+
 
     /*
      * Uncomment any of the following lines if you want to register an op mode.
