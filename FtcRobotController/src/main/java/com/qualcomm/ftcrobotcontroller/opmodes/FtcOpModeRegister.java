@@ -61,6 +61,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register ("Works", PushBotManual.class);
     manager.register ("Simple_Dpad", Simple_Dpad.class);
       manager.register ("joysticks", joysticks.class);
+    manager.register ("Motor_Encoder_Test", Motor_Encoder_Test.class);
 
 
     /*
