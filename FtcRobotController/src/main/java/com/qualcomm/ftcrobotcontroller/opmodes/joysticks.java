@@ -7,17 +7,17 @@ import com.qualcomm.robotcore.util.Range;
 
 public class joysticks extends OpMode {
 
-    DcMotor motor_Front_Right;
-    DcMotor motor_Front_Left;
-    DcMotor motor_Back_Right;
-    DcMotor motor_Back_Left;
+    DcMotor motor_front_right;
+    DcMotor motor_front_left;
+    DcMotor motor_back_right;
+    DcMotor motor_back_left;
 
     @Override
     public void init() {
-        motor_Front_Right = hardwareMap.dcMotor.get("motor_Front_Right");
-        motor_Front_Left = hardwareMap.dcMotor.get("motor__Front_Left");
-        motor_Back_Right = hardwareMap.dcMotor.get("motor_Back_Right");
-        motor_Back_Left = hardwareMap.dcMotor.get("motor_Back_Left");
+        motor_front_right = hardwareMap.dcMotor.get("motor_front_right");
+        motor_front_left = hardwareMap.dcMotor.get("motor_front_left");
+        motor_back_right = hardwareMap.dcMotor.get("motor_back_right");
+        motor_back_left = hardwareMap.dcMotor.get("motor_back_left");
         telemetry.addData("", "***Everything Loaded OK***");
     }
 
@@ -29,26 +29,46 @@ public class joysticks extends OpMode {
         if(x>0)
         {
             //Turning right
-            motor_Front_Right.setPower((1.0 - x)*y);
-            motor_Front_Left.setPower(1.0*y);
-            motor_Back_Right.setPower((1.0 - x)*y);
-            motor_Back_Left.setPower(1.0*y);
+            motor_front_right.setPower((1.0 - x)*y);
+            motor_front_left.setPower(1.0*y);
+            motor_back_right.setPower((1.0 - x)*y);
+            motor_back_left.setPower(1.0*y);
         }
         else if(x<0)
         {
             //Turning right
-            motor_Front_Left.setPower((-1.0 - x)*y);
-            motor_Front_Right.setPower(1.0*y);
-            motor_Back_Left.setPower((-1.0 - x)*y);
-            motor_Back_Right.setPower(1.0*y);
+            motor_front_left.setPower((-1.0 - x)*y);
+            motor_front_right.setPower(1.0*y);
+            motor_back_left.setPower((-1.0 - x)*y);
+            motor_back_right.setPower(1.0*y);
+        }
+        else if(y == 0) {
+            //All the way right and all the way left.
+            if(x>0)
+            {
+                motor_front_right.setPower(0.0);
+                motor_front_left.setPower(x);
+                motor_back_right.setPower(0.0);
+                motor_back_left.setPower(x);
+            }
+            else if (x<0)
+            {
+                motor_front_right.setPower(x);
+                motor_front_left.setPower(0.0);
+                motor_back_right.setPower(x);
+                motor_back_left.setPower(0.0);
+            }
         }
         else
         {
             //Straight, as powerful as forward.
-            motor_Front_Left.setPower(y);
-            motor_Front_Right.setPower(y);
-            motor_Back_Left.setPower(y);
-            motor_Back_Right.setPower(y);
+            motor_front_left.setPower(y);
+            motor_front_right.setPower(y);
+            motor_back_left.setPower(y);
+            motor_back_right.setPower(y);
         }
     }
 }
+
+
+//top-left -
