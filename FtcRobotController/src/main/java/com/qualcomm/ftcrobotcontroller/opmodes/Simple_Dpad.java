@@ -28,11 +28,6 @@ public class Simple_Dpad extends OpMode {
     * */
 
 
-
-
-    //height needs to lock
-    //restrict box tilt
-    //kill power 50%;
     //impliment smooth for box tilt
 
     double armposition;
@@ -69,24 +64,20 @@ public class Simple_Dpad extends OpMode {
     public void loop() {
         boolean up = gamepad1.dpad_up;
         boolean down = gamepad1.dpad_down;
-        boolean left = gamepad1.dpad_left;
-        boolean right = gamepad1.dpad_right;
+        boolean left = gamepad1.dpad_right;
+        boolean right = gamepad1.dpad_left;
         double power;
+
+        telemetry.addData("", backr.getCurrentPosition());
 
 
         //Victory Dance
 
-//        if(gamepad1.y)
-//        {
-//            frontr.setDirection(DcMotor.Direction.FORWARD);
-//            frontl.setDirection(DcMotor.Direction.REVERSE);
-//            telemetry.addData("", "VICTORY DANCE");
-//        }
-//        else
-//        {
-//            frontr.setDirection(DcMotor.Direction.REVERSE);
-//            frontl.setDirection(DcMotor.Direction.FORWARD);
-//        }
+        if(gamepad1.right_bumper)
+        {
+            frontl.setDirection(DcMotor.Direction.FORWARD);
+            frontr.setDirection(DcMotor.Direction.REVERSE);
+        }
 
         //Reduce front power
         if(gamepad1.a)
@@ -156,6 +147,11 @@ public class Simple_Dpad extends OpMode {
         //Brainstorm for limiting the tilt of dc motors.
 
 
+        //Slow down power on teh tilting.
+        //Lock arm.
+
+
+
 
         //STRING
         if(gamepad2.left_bumper)
@@ -172,40 +168,47 @@ public class Simple_Dpad extends OpMode {
         }
 
         //HEIGHT
+
+        float height_power = 0.8f;
+
         if(gamepad2.dpad_down)
         {
-            height.setPower(1.0);
+            height.setPower(height_power-0.3);
         }
         else if(gamepad2.dpad_up)
         {
-            height.setPower(-1.0);
+            height.setPower(-height_power);
         }
-        else if(gamepad2.dpad_left)
+        else if(gamepad2.y)
         {
             boxa.setPower(1.0);
         }
-        else if(gamepad2.dpad_right)
+        else if(gamepad2.b)
         {
             boxa.setPower(-1.0);
         }
         else
         {
-            height.setPower(0.0);
+            //THIS MAKES SURE IT DOESNT FALL DOWN
+            height.setPower(-0.05);
             boxa.setPower(0.0);
         }
 
         //BOXT
 
         //TO reverse switch negatives or the left and right triggers.
-        float power_decrease = 0.5f;
+        float power_decrease = 0.1f;
+
 
         if(gamepad2.left_trigger > 0)
         {
             boxt.setPower(power_decrease*gamepad2.left_trigger);
+            telemetry.addData("Text", "Left");
         }
         else if(gamepad2.right_trigger > 0)
         {
-            boxt.setPower(-power_decrease*gamepad2.left_trigger);
+            boxt.setPower(-power_decrease*gamepad2.right_trigger);
+            telemetry.addData("Text", "Right");
         }
         else
         {
@@ -215,23 +218,23 @@ public class Simple_Dpad extends OpMode {
         //ARM
         if(gamepad2.a)
         {
-            arm.setPosition(0.0);
+            arm.setPosition(-1.0);
         }
         else
         {
-            arm.setPosition(1.0);
+            arm.setPosition(0.0);
         }
 
 
         //SERVO
         if(gamepad2.start) {
-            boxr.setPosition(1.0);
-            boxl.setPosition(1.0);
+            boxr.setPosition(0.0);
+            boxl.setPosition(0.0);
         }
         else
         {
-            boxr.setPosition(0.0);
-            boxl.setPosition(0.0);
+            boxr.setPosition(1.0);
+            boxl.setPosition(1.0);
         }
     }
 }
