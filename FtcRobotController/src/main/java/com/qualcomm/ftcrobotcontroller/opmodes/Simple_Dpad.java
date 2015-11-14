@@ -202,12 +202,10 @@ public class Simple_Dpad extends OpMode {
         if(gamepad2.y)
         {
             boxa.setPower(pitchSpeed);
-            telemetry.addData("", "*********WORKDAMMITYYYYYYY!!!!**********");
         }
         else if(gamepad2.b)
         {
             boxa.setPower(-pitchSpeed);
-            telemetry.addData("", "*********WORKDAMMITBBBBBBBBBB!!!!**********");
         }
         else
         {
@@ -217,14 +215,14 @@ public class Simple_Dpad extends OpMode {
         //BOXT
 
         //TO reverse switch negatives or the left and right triggers.
-        float power_decrease = 0.7f;
+        float tilt_power = 0.3f;
 
 
         if(gamepad2.left_trigger > 0) {
-            boxt.setPower(power_decrease*gamepad2.left_trigger);
+            boxt.setPower(tilt_power*gamepad2.left_trigger);
         }
         else if(gamepad2.right_trigger > 0) {
-            boxt.setPower(-power_decrease*gamepad2.right_trigger);
+            boxt.setPower(-tilt_power*gamepad2.right_trigger);
         }
         else
         {
@@ -245,7 +243,7 @@ public class Simple_Dpad extends OpMode {
         //SERVO
         if(gamepad2.start) {
             boxr.setPosition(0.0);
-            boxl.setPosition(1.0);
+            boxl.setPosition(1x.0);
         }
         else
         {
