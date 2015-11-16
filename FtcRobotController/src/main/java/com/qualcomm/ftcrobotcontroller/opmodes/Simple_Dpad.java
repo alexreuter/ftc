@@ -83,7 +83,7 @@ public class Simple_Dpad extends OpMode {
 //            frontr.setDirection(DcMotor.Direction.REVERSE);
 //        }
 
-        if(gamepad1.left_bumper)
+        if(gamepad1.back)
         {
             boxa.setTargetPosition(0);
         }
@@ -180,12 +180,12 @@ public class Simple_Dpad extends OpMode {
 
         //HEIGHT
 
-        float height_power = 0.9f;
+        float height_power = 0.7f;
 
 
         if(gamepad2.dpad_down)
         {
-            height.setPower(0.8);
+            height.setPower(0.5);
         }
         else if(gamepad2.dpad_up)
         {
@@ -198,7 +198,7 @@ public class Simple_Dpad extends OpMode {
         }
 
 //BOXA THE PITCH OF THE BOX
-        float pitchSpeed = 0.3f;
+        float pitchSpeed = 0.15f;
         if(gamepad2.y)
         {
             boxa.setPower(pitchSpeed);
@@ -215,7 +215,7 @@ public class Simple_Dpad extends OpMode {
         //BOXT
 
         //TO reverse switch negatives or the left and right triggers.
-        float tilt_power = 0.3f;
+        float tilt_power = 0.15f;
 
 
         if(gamepad2.left_trigger > 0) {
@@ -243,7 +243,7 @@ public class Simple_Dpad extends OpMode {
         //SERVO
         if(gamepad2.start) {
             boxr.setPosition(0.0);
-            boxl.setPosition(1x.0);
+            boxl.setPosition(1.0);
         }
         else
         {
